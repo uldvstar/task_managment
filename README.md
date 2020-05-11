@@ -3,9 +3,9 @@ This project was created in 1 week with a code generator I have created to incre
 
 ## Files Structure
 
-####Common Backend file structure
+**Common Backend file structure**
 
-Inside App/Modules:
+`Inside App/Modules:`
 
 - Each module on the site is separated into folders without sub-categorization 
 - Controller logic is all the logic required before executing the action
@@ -13,9 +13,9 @@ Inside App/Modules:
 - Service classes are for executing specific actions and don't run any conditions
 - Standards are represent the rule for executing an action like authorization, validations, and criterias
 
-####Common Vue Files
+**Common Vue Files**
 
-#####General Components 
+`General Components `
 - list component is responsible for calling the fetch endpoint and uses 3 components:
     1. Loading animation component
     2. slot for custom component (e.g. user component, client component)
@@ -26,7 +26,7 @@ Inside App/Modules:
     2. Modal Component
     3. Selectable component for fetching data and creating a select input component
     
-#####Modules components
+`Modules components`
 - Each module usually has only 3 components:
     1. element component singular component layout 
     2. form component for creating and editing modules
