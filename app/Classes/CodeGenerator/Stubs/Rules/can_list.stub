@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\Standards\Rules;
+
+
+use App\Classes\General\Abstracts\AbstractRule;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\DataTransferObjects\$MODEL_NAME$Object;
+
+class CanList$MODEL_NAME_PLURAL$ extends AbstractRule
+{
+
+
+    /**
+     * @return bool
+     */
+    protected function authorized(): bool
+    {
+        // TODO  Set Authorization rules
+        return true;
+
+    }
+
+    /**
+     * @param $MODEL_NAME$Object $object
+     * @return bool
+     */
+    protected function validators($object): bool
+    {
+        return true;
+
+    }
+
+
+    /**
+     * @param $MODEL_NAME$Object $object
+     * @return bool
+     */
+    protected function criteria($object): bool
+    {
+        return true;
+    }
+
+}

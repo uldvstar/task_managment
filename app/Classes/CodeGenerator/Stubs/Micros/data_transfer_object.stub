@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\DataTransferObjects;
+
+use App\Classes\Interfaces\DataTransferObject;
+
+class $MODEL_NAME$Object implements DataTransferObject
+{
+
+    $PROPERTIES$
+
+    /**
+     * $MODEL_NAME$Object constructor.
+     $CONSTRUCTOR_DOCS$
+     */
+    public function __construct($CONSTRUCTOR_PROPERTIES$)
+    {
+        $CONSTRUCTOR_BODY$
+    }
+
+$GETTER_FUNCTIONS$
+
+
+}

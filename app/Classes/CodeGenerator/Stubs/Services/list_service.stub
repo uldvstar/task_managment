@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\Services;
+
+
+use App\Classes\General\Eloquent\AbstractListRecord;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\$MODEL_NAME$;
+
+class Lists$MODEL_NAME_PLURAL$ extends AbstractListRecord
+{
+
+    /** @var $MODEL_NAME$ */
+    private $repository;
+
+    /**
+     * Lists$MODEL_NAME_PLURAL$ constructor.
+     * @param $MODEL_NAME$ $repository
+     */
+    public function __construct($MODEL_NAME$ $repository)
+    {
+        $this->repository = $repository;
+    }
+
+
+    /**
+     * @return Builder
+     */
+    function getRepository(): Builder
+    {
+        return $this->repository->newQuery();
+    }
+}

@@ -1,0 +1,78 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\ControllersLogic;
+
+
+use App\Classes\General\Abstracts\AbstractControllerLogic;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Services\Updates$MODEL_NAME$;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Services\Fetches$MODEL_NAME$;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Standards\Rules\CanUpdate$MODEL_NAME$;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\DataTransferObjects\$MODEL_NAME$Object;
+use App\Http\Resources\$MODEL_NAME$Resource;
+use ErrorException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class Update$MODEL_NAME$ControllerLogic extends AbstractControllerLogic
+{
+
+    /**
+     * @return array
+     */
+    protected function notification():array {
+        return [
+            'title' => 'Updated $MODEL_NAME_HUMAN$',
+            'message' => 'You have successfully updated the $MODEL_NAME_HUMAN$'
+        ];
+    }
+
+    /** @var CanUpdate$MODEL_NAME$ */
+    private $canUpdate$MODEL_NAME$;
+
+    /** @var Updates$MODEL_NAME$ */
+    private $updates$MODEL_NAME$;
+
+    /** @var Fetches$MODEL_NAME$ */
+    private $fetches$MODEL_NAME$;
+
+    /**
+     * Update$MODEL_NAME$ControllerLogic constructor.
+     * @param CanUpdate$MODEL_NAME$ $canUpdate$MODEL_NAME$
+     * @param Updates$MODEL_NAME$ $updates$MODEL_NAME$
+     * @param Fetches$MODEL_NAME$ $fetches$MODEL_NAME$
+     */
+    public function __construct(CanUpdate$MODEL_NAME$ $canUpdate$MODEL_NAME$, Updates$MODEL_NAME$ $updates$MODEL_NAME$, Fetches$MODEL_NAME$ $fetches$MODEL_NAME$)
+    {
+        $this->canUpdate$MODEL_NAME$ = $canUpdate$MODEL_NAME$;
+        $this->updates$MODEL_NAME$ = $updates$MODEL_NAME$;
+        $this->fetches$MODEL_NAME$ = $fetches$MODEL_NAME$;
+    }
+
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws ErrorException
+     */
+    public function logic(Request $request) : JsonResponse
+    {
+        try {
+
+            $object = new $MODEL_NAME$Object($REQUEST_FIELDS$);
+
+            $this->canUpdate$MODEL_NAME$->passes($object);
+
+            $query = $this->fetches$MODEL_NAME$->execute(['id' => $request->route('id')]);
+
+            $query = $this->updates$MODEL_NAME$->execute($query, $object);
+
+            return $this->resourceResponse(new $MODEL_NAME$Resource($query));
+
+
+        } catch (\Exception $exception){
+            throw new ErrorException($exception->getMessage(), $exception->getCode());
+        }
+
+    }
+
+}

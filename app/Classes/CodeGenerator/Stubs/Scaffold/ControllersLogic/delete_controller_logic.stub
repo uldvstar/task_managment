@@ -1,0 +1,73 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\ControllersLogic;
+
+
+use App\Classes\General\Abstracts\AbstractControllerLogic;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Services\Deletes$MODEL_NAME$;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Services\Fetches$MODEL_NAME$;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Standards\Rules\CanDelete$MODEL_NAME$;
+use ErrorException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class Delete$MODEL_NAME$ControllerLogic extends AbstractControllerLogic
+{
+    /**
+     * @return array
+     */
+    protected function notification():array {
+        return [
+            'title' => 'Deleted $MODEL_NAME_HUMAN$',
+            'message' => 'You have successfully deleted a $MODEL_NAME_HUMAN$'
+        ];
+    }
+
+
+    /** @var CanDelete$MODEL_NAME$ */
+    private $canDelete$MODEL_NAME$;
+
+    /** @var Deletes$MODEL_NAME$ */
+    private $deletes$MODEL_NAME$;
+
+    /** @var Fetches$MODEL_NAME$ */
+        private $fetches$MODEL_NAME$;
+
+    /**
+     * Delete$MODEL_NAME$ControllerLogic constructor.
+     * @param CanDelete$MODEL_NAME$ $canDelete$MODEL_NAME$
+     * @param Deletes$MODEL_NAME$ $deletes$MODEL_NAME$
+     * @param Fetches$MODEL_NAME$ $fetches$MODEL_NAME$
+     */
+    public function __construct(CanDelete$MODEL_NAME$ $canDelete$MODEL_NAME$, Deletes$MODEL_NAME$ $deletes$MODEL_NAME$, Fetches$MODEL_NAME$ $fetches$MODEL_NAME$)
+    {
+        $this->canDelete$MODEL_NAME$ = $canDelete$MODEL_NAME$;
+        $this->deletes$MODEL_NAME$ = $deletes$MODEL_NAME$;
+        $this->fetches$MODEL_NAME$ = $fetches$MODEL_NAME$;
+    }
+
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws ErrorException
+     */
+    public function logic(Request $request) : JsonResponse
+    {
+        try {
+
+            $this->canDelete$MODEL_NAME$->passes();
+
+            $query = $this->fetches$MODEL_NAME$->execute(['id' => $request->route('id')]);
+
+            $this->deletes$MODEL_NAME$->execute($query);
+
+            return $this->response([]);
+
+        } catch (\Exception $exception){
+            throw new ErrorException($exception->getMessage(), $exception->getCode());
+        }
+
+    }
+
+}

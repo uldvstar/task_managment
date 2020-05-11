@@ -1,0 +1,7 @@
+    /**
+     * @return $DATA_TYPE$
+     */
+    public function $FUNCTION_NAME$(): $DATA_TYPE$
+    {
+        return $this->$FIELD_NAME$;
+    }

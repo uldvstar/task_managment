@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="98036fc6-ff7d-4855-8b5d-d9592b859883" name="localhost" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="D:\work\CIEF\Projects\vagrant\project\tickets" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

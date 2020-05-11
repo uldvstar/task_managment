@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\Services;
+
+
+use App\Classes\General\Eloquent\AbstractFetchRecord;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\$MODEL_NAME$;
+
+class Fetches$MODEL_NAME$ extends AbstractFetchRecord
+{
+
+    /** @var $MODEL_NAME$ */
+    private $repository;
+
+    /**
+     * Fetches$MODEL_NAME$ constructor.
+     * @param $MODEL_NAME$ $repository
+     */
+    public function __construct($MODEL_NAME$ $repository)
+    {
+        $this->repository = $repository;
+    }
+
+
+    /**
+     * @return Builder
+     */
+    public function getRepository(): Builder
+    {
+        return $this->repository->newQuery();
+    }
+}

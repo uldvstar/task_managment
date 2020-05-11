@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers\$MODEL_NAME_PLURAL$;
+
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\ControllersLogic\Delete$MODEL_NAME$ControllerLogic;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class Delete$MODEL_NAME$Controller
+{
+    /**
+     * @param Request $request
+     * @param Delete$MODEL_NAME$ControllerLogic $logic
+     * @return JsonResponse
+     */
+    public function destroy(Request $request, Delete$MODEL_NAME$ControllerLogic $logic): JsonResponse {
+        return $logic->execute($request);
+    }
+
+}

@@ -1,0 +1,37 @@
+[
+    {
+        "name": "taggable_id",
+        "dbType": "unsignedBigInteger:foreign,tasks,id",
+        "htmlType": "selectTable:tasks:name,id",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "relation": "mt1,Task,task_id,id"
+    },
+    {
+        "name": "field_id",
+        "dbType": "unsignedBigInteger:foreign,custom_fields,id",
+        "htmlType": "selectTable:custom_fields:name,id",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "relation": "1t1,CustomField,field_id,id"
+    },
+    {
+        "name": "value_id",
+        "dbType": "unsignedBigInteger:foreign,field_values,id",
+        "htmlType": "selectTable:field_values:name,id",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": false
+    }
+]

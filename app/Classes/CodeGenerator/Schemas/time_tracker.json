@@ -1,0 +1,43 @@
+[
+    {
+        "name": "trackable_id",
+        "dbType": "unsignedBigInteger",
+        "fillable": true,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "trackable_type",
+        "dbType": "string",
+        "fillable": true,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "user_id",
+        "dbType": "unsignedBigInteger:foreign,users,id",
+        "fillable": true,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "relation": "1t1,User,head_id,id"
+    },
+    {
+        "name": "time_start",
+        "dbType": "datetime",
+        "fillable": true,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "time_end",
+        "dbType": "datetime",
+        "fillable": true,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    }
+]

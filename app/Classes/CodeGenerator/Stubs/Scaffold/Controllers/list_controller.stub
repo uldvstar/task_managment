@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers\$MODEL_NAME_PLURAL$;
+
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\ControllersLogic\List$MODEL_NAME_PLURAL$ControllerLogic;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class List$MODEL_NAME_PLURAL$Controller
+{
+    /**
+     * @param Request $request
+     * @param list$MODEL_NAME_PLURAL$ControllerLogic $logic
+     * @return JsonResponse
+     */
+    public function list(Request $request, list$MODEL_NAME_PLURAL$ControllerLogic $logic): JsonResponse {
+        return $logic->execute($request);
+    }
+
+}

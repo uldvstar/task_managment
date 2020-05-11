@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\Services;
+
+use App\Classes\General\Eloquent\AbstractDeleteRecord;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\DataTransferObjects\$MODEL_NAME$Object;
+use App\Models\$MODEL_NAME$;
+
+class Deletes$MODEL_NAME$ extends AbstractDeleteRecord
+{
+
+    public function execute($MODEL_NAME$ $model) {
+        return $this->handler($model);
+    }
+}

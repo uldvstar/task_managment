@@ -1,0 +1,8 @@
+                    <div class="row mb-3 animated fadeInDown fast">
+                        <div class="col">
+                            <label class="form-group has-float-label mb-1">
+                                $FIELD$
+                                <span>$FIELD_NAME$</span>
+                            </label>
+                        </div>
+                    </div>

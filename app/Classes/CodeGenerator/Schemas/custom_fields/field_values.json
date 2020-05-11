@@ -1,0 +1,25 @@
+[
+    {
+        "name": "field_id",
+        "dbType": "unsignedBigInteger:foreign,custom_fields,id",
+        "htmlType": "selectTable:custom_fields:name,id",
+        "validations": "required",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "relation": "1tm,CustomField,field_id,id"
+    },
+    {
+        "name": "value",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    }
+]

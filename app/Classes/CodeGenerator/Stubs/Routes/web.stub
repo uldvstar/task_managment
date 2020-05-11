@@ -1,0 +1,5 @@
+
+
+Route::get('/$MODEL_NAME_PLURAL_SNAKE$', function () {
+   return view('pages.$MODEL_NAME_PLURAL_SNAKE$.index');
+})->name('$MODEL_NAME_SNAKE$.dashboard');

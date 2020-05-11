@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\ControllersLogic;
+
+
+use App\Classes\General\Abstracts\AbstractControllerLogic;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Services\Lists$MODEL_NAME_PLURAL$;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Standards\Rules\CanList$MODEL_NAME_PLURAL$;
+use App\Http\Resources\$MODEL_NAME$Resource;
+use ErrorException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class List$MODEL_NAME_PLURAL$ControllerLogic extends AbstractControllerLogic
+{
+
+    /**
+     * @return array
+     */
+    protected function notification():array {
+        return [
+            'title' => 'Retrieved $MODEL_NAME_PLURAL_HUMAN$',
+            'message' => 'You have successfully retrieved a list of $MODEL_NAME_PLURAL_HUMAN$'
+        ];
+    }
+
+    /** @var CanList$MODEL_NAME_PLURAL$ */
+    private $canList$MODEL_NAME_PLURAL$;
+
+    /** @var Lists$MODEL_NAME_PLURAL$ */
+    private $lists$MODEL_NAME_PLURAL$;
+
+    /**
+     * List$MODEL_NAME_PLURAL$ControllerLogic constructor.
+     * @param CanList$MODEL_NAME_PLURAL$ $canList$MODEL_NAME_PLURAL$
+     * @param Lists$MODEL_NAME_PLURAL$ $lists$MODEL_NAME_PLURAL$
+     */
+    public function __construct(CanList$MODEL_NAME_PLURAL$ $canList$MODEL_NAME_PLURAL$, Lists$MODEL_NAME_PLURAL$ $lists$MODEL_NAME_PLURAL$)
+    {
+        $this->canList$MODEL_NAME_PLURAL$ = $canList$MODEL_NAME_PLURAL$;
+        $this->lists$MODEL_NAME_PLURAL$ = $lists$MODEL_NAME_PLURAL$;
+    }
+
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws ErrorException
+     */
+    public function logic(Request $request) : JsonResponse
+    {
+        try {
+
+            $this->canList$MODEL_NAME_PLURAL$->passes();
+
+            $query = $this->lists$MODEL_NAME_PLURAL$->execute($this->lists$MODEL_NAME_PLURAL$->deserializeFilters($request->input('filters')));
+
+            return $this->collectionResponse($MODEL_NAME$Resource::collection($query));
+
+        } catch (\Exception $exception){
+            throw new ErrorException($exception->getMessage(), $exception->getCode());
+        }
+
+    }
+
+}

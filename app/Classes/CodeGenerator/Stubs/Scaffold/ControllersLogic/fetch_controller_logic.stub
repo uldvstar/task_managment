@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\ControllersLogic;
+
+
+use App\Classes\General\Abstracts\AbstractControllerLogic;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Services\Fetches$MODEL_NAME$;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Standards\Rules\CanFetch$MODEL_NAME$;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\DataTransferObjects\$MODEL_NAME$Object;
+use App\Http\Resources\$MODEL_NAME$Resource;
+use ErrorException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class Fetch$MODEL_NAME$ControllerLogic extends AbstractControllerLogic
+{
+
+    /**
+     * @return array
+     */
+    protected function notification():array {
+        return [
+            'title' => 'Retrieved $MODEL_NAME_HUMAN$',
+            'message' => 'You have successfully retrieved a $MODEL_NAME_HUMAN$'
+        ];
+    }
+
+    /** @var CanFetch$MODEL_NAME$ */
+    private $canFetch$MODEL_NAME$;
+
+    /** @var Fetches$MODEL_NAME$ */
+    private $fetches$MODEL_NAME$;
+
+    /**
+     * Fetch$MODEL_NAME$ControllerLogic constructor.
+     * @param CanFetch$MODEL_NAME$ $canFetch$MODEL_NAME$
+     * @param Fetches$MODEL_NAME$ $fetches$MODEL_NAME$
+     */
+    public function __construct(CanFetch$MODEL_NAME$ $canFetch$MODEL_NAME$, Fetches$MODEL_NAME$ $fetches$MODEL_NAME$)
+    {
+        $this->canFetch$MODEL_NAME$ = $canFetch$MODEL_NAME$;
+        $this->fetches$MODEL_NAME$ = $fetches$MODEL_NAME$;
+    }
+
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws ErrorException
+     */
+    public function logic(Request $request) : JsonResponse
+    {
+        try {
+
+            $this->canFetch$MODEL_NAME$->passes();
+
+            $query = $this->fetches$MODEL_NAME$->execute(['id' => $request->route('id')]);
+
+            return $this->resourceResponse(new $MODEL_NAME$Resource($query));
+
+        } catch (\Exception $exception){
+            throw new ErrorException($exception->getMessage(), $exception->getCode());
+        }
+
+    }
+
+}

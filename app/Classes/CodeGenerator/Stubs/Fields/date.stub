@@ -1,0 +1,1 @@
+<date-picker-component v-model="parameters.$FIELD_NAME$"></date-picker-component>

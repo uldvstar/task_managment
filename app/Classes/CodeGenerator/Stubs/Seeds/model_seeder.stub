@@ -1,0 +1,16 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class $MODEL_NAME_PLURAL$TableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        factory($NAMESPACE_MODEL$\$MODEL_NAME$::class, 30)->create();
+    }
+}

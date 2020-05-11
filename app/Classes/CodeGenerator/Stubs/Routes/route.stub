@@ -1,0 +1,15 @@
+
+
+Route::group(['prefix' => '$MODEL_NAME_SNAKE$', 'as' => '$MODEL_NAME_SNAKE$.', 'namespace' => '$MODEL_NAME_PLURAL$'], function () {
+
+    Route::get('/{id}/show', 'Fetch$MODEL_NAME$Controller@fetch')->name('show');
+
+    Route::get('/list', 'List$MODEL_NAME_PLURAL$Controller@list')->name('list');
+
+    Route::post('/create', 'Create$MODEL_NAME$Controller@create')->name('create');
+
+    Route::put('/update/{id}', 'Update$MODEL_NAME$Controller@update')->name('update');
+
+    Route::delete('/delete/{id}', 'Delete$MODEL_NAME$Controller@destroy')->name('delete');
+
+});

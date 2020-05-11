@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\Services;
+
+use App\Classes\General\Eloquent\AbstractUpdateRecord;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\DataTransferObjects\$MODEL_NAME$Object;
+use App\Models\$MODEL_NAME$;
+
+class Creates$MODEL_NAME$ extends AbstractUpdateRecord
+{
+
+    public function execute($MODEL_NAME$Object $object) {
+        $model = new $MODEL_NAME$();
+        $FIELDS$
+
+        return $this->handler($model);
+
+    }
+}

@@ -1,0 +1,1 @@
+<select-component  :options="$INPUT_ARR$" v-model="parameters.$FIELD_NAME$"></select-component>

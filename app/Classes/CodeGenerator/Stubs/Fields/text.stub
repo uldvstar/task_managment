@@ -1,0 +1,1 @@
+<input v-model="parameters.$FIELD_NAME$" type="text" class="form-control">

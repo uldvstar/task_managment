@@ -1,0 +1,59 @@
+[
+    {
+        "name": "name",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "type_id",
+        "dbType": "unsignedBigInteger:foreign,modular_types,id",
+        "htmlType": "selectTable:modular_types:name,id",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "relation": "1t1,ModularType,type_id,id"
+    },
+    {
+        "name": "default_id",
+        "dbType": "unsignedBigInteger:foreign:nullable,field_values,id",
+        "htmlType": "selectTable:field_values:name,id",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "relation": "1t1,FieldValue,default_id,id"
+    },
+    {
+        "name": "empty",
+        "dbType": "boolean",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "multiple",
+        "dbType": "boolean",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    }
+]

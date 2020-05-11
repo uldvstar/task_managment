@@ -1,0 +1,1 @@
+<selectable-component  :endpoint="route('api.$SELECT_TABLE$.list')" section="$SELECT_TABLE_CAMEL$Section" valueColumn="$VALUE_COLUMN$" labelColumn="$LABEL_COLUMN$" v-model="parameters.$FIELD_NAME$"></selectable-component>

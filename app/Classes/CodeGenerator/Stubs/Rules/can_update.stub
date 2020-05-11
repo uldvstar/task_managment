@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\Standards\Rules;
+
+
+use App\Classes\General\Abstracts\AbstractRule;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\DataTransferObjects\$MODEL_NAME$Object;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Standards\Validators\$MODEL_NAME$Validation;
+
+class CanUpdate$MODEL_NAME$ extends AbstractRule
+{
+
+    /** @var $MODEL_NAME$Validation */
+    private $$MODEL_NAME_CAMEL$Validation;
+
+    /**
+     * CanUpdate$MODEL_NAME$ constructor.
+     * @param $MODEL_NAME$Validation $$MODEL_NAME_CAMEL$Validation
+     */
+    public function __construct($MODEL_NAME$Validation $$MODEL_NAME_CAMEL$Validation)
+    {
+        $this->$MODEL_NAME_CAMEL$Validation = $$MODEL_NAME_CAMEL$Validation;
+    }
+
+
+    /**
+     * @return bool
+     */
+    protected function authorized(): bool
+    {
+        // TODO  Set Authorization rules
+        return true;
+
+    }
+
+    /**
+     * @param $MODEL_NAME$Object $object
+     * @return bool
+     * @throws \App\Classes\Exceptions\RequestValidationException
+     */
+    protected function validators($object): bool
+    {
+        return $this->$MODEL_NAME_CAMEL$Validation->validate($object);
+
+    }
+
+
+    /**
+     * @param $MODEL_NAME$Object $object
+     * @return bool
+     */
+    protected function criteria($object): bool
+    {
+        return true;
+    }
+
+}

@@ -1,0 +1,69 @@
+<?php
+
+namespace App\Classes\Modules\$MODEL_NAME_PLURAL$\ControllersLogic;
+
+
+use App\Classes\General\Abstracts\AbstractControllerLogic;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Services\Creates$MODEL_NAME$;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\Standards\Rules\CanCreate$MODEL_NAME$;
+use App\Classes\Modules\$MODEL_NAME_PLURAL$\DataTransferObjects\$MODEL_NAME$Object;
+use App\Http\Resources\$MODEL_NAME$Resource;
+use ErrorException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class Create$MODEL_NAME$ControllerLogic extends AbstractControllerLogic
+{
+
+    /**
+     * @return array
+     */
+    protected function notification():array {
+        return [
+            'title' => 'Created $MODEL_NAME_HUMAN$',
+            'message' => 'You have successfully created a new $MODEL_NAME_HUMAN$'
+        ];
+    }
+
+    /** @var CanCreate$MODEL_NAME$ */
+    private $canCreate$MODEL_NAME$;
+
+    /** @var Creates$MODEL_NAME$ */
+    private $creates$MODEL_NAME$;
+
+    /**
+     * Create$MODEL_NAME$ControllerLogic constructor.
+     * @param CanCreate$MODEL_NAME$ $canCreate$MODEL_NAME$
+     * @param Creates$MODEL_NAME$ $creates$MODEL_NAME$
+     */
+    public function __construct(CanCreate$MODEL_NAME$ $canCreate$MODEL_NAME$, Creates$MODEL_NAME$ $creates$MODEL_NAME$)
+    {
+        $this->canCreate$MODEL_NAME$ = $canCreate$MODEL_NAME$;
+        $this->creates$MODEL_NAME$ = $creates$MODEL_NAME$;
+    }
+
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws ErrorException
+     */
+    public function logic(Request $request) : JsonResponse
+    {
+        try {
+
+            $object = new $MODEL_NAME$Object($REQUEST_FIELDS$);
+
+            $this->canCreate$MODEL_NAME$->passes($object);
+
+            $query = $this->creates$MODEL_NAME$->execute($object);
+
+            return $this->resourceResponse(new $MODEL_NAME$Resource($query));
+
+        } catch (\Exception $exception){
+            throw new ErrorException($exception->getMessage(), $exception->getCode());
+        }
+
+    }
+
+}

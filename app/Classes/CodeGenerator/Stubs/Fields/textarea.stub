@@ -1,0 +1,1 @@
+<textarea v-model="parameters.$FIELD_NAME$" class="form-control"></textarea>
